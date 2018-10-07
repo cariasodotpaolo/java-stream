@@ -1,0 +1,37 @@
+---
+vehicleDataJsonList:
+
+  - vehicleData:
+      dealerName: 'CARS_R_US'
+      dealerId: 'CRU'
+      deliverySchedule: 'MONDAY'
+
+      vehicleTypeData:
+        vehicleTypes:
+          - vehicleType: 'SPORTS'
+
+      engineData:
+        manufacturers:
+          - manufacture: 'FERRARI'
+          - manufacture: 'BMW'
+        engines:
+          - engine: 'V4'
+          - engine: 'V6'
+          - engine: 'V8'
+
+  - vehicleData:
+        storeName: 'VINTAGE_CARS'
+        storeId: 'VC'
+        deliverySchedule: 'FRIDAY'
+
+        vehicleTypeData:
+          vehicleTypes:
+            - vehicleType: 'VINTAGE_SPORT'
+
+        engineData:
+          manufacturers:
+            - manufacture: 'FORD'
+            - manufacture: 'CHRYSLER'
+          engines:
+            - engine: 'V6'
+            - engine: 'V8'
