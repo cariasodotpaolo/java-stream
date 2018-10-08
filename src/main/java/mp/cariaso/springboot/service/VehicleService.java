@@ -5,19 +5,19 @@ import mp.cariaso.springboot.model.VehicleData;
 
 public interface VehicleService {
 
-    VehicleData get(String siteId);
+    VehicleData get(String dealerId);
 
-    List<String> getVehicleTypes(String siteId);
+    List<String> getVehicleTypes(String dealerId);
 
-    List<String> getEngines(String siteId);
+    List<String> getEngines(String dealerId);
 
-    List<String> getManufacturers(String siteId);
+    List<String> getManufacturers(String dealerId);
 
     List<String> getDealerIds();
 
-    boolean isEngineDataAvailable(String siteId);
+    boolean isEngineDataAvailable(String dealerId);
 
-    boolean isVehicleTypeDataEnabled(String siteId);
+    boolean isVehicleTypeDataEnabled(String dealerId);
 
-    boolean dealerExists(String siteId);
+    boolean dealerExists(String dealerId);
 }
