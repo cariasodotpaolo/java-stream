@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
-import mp.cariaso.springboot.model.VehicleDataJson;
 import mp.cariaso.springboot.model.VehicleDataJsonList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,24 +23,23 @@ public class YamlDataBuilderServiceImpl implements DataBuilderService {
     @Qualifier("yamlObjectMapper")
     private ObjectMapper yamlObjectMapper;
 
-    @Value("${sites.config.file}")
-    private String sitesConfigFile;
+    @Value("${vehicle.dealer.data.file}")
+    private String vehicleDealerDataFile;
 
 
     @Override
     public VehicleDataJsonList getJsonData() throws IOException {
 
-        log.info("Starting getSiteControllerConfigurationConfig");
 
         VehicleDataJsonList vehicleDataJsonList;
 
-        Resource siteConfigResource = resourceLoader.getResource(sitesConfigFile);
+        Resource dataResource = resourceLoader.getResource(vehicleDealerDataFile);
 
-        if (siteConfigResource.exists()) {
-            vehicleDataJsonList = yamlObjectMapper.readValue(siteConfigResource.getInputStream(), VehicleDataJsonList.class);
+        if (dataResource.exists()) {
+            vehicleDataJsonList = yamlObjectMapper.readValue(dataResource.getInputStream(), VehicleDataJsonList.class);
         }
         else {
-            throw new FileNotFoundException("Yaml sites config file not found: " + sitesConfigFile);
+            throw new FileNotFoundException("Yaml data file not found: " + vehicleDealerDataFile);
         }
 
         return vehicleDataJsonList;

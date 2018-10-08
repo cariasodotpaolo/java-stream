@@ -31,23 +31,23 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Override
-    public VehicleData get(String siteId) {
-        return vehicleDataMap.get(siteId.toUpperCase());
+    public VehicleData get(String dealerId) {
+        return vehicleDataMap.get(dealerId.toUpperCase());
     }
 
     @Override
-    public List<String> getVehicleTypes(String siteId) {
-        return vehicleTypes.get(siteId.toUpperCase());
+    public List<String> getVehicleTypes(String dealerId) {
+        return vehicleTypes.get(dealerId.toUpperCase());
     }
 
     @Override
-    public List<String> getEngines(String siteId) {
-        return engines.get(siteId.toUpperCase());
+    public List<String> getEngines(String dealerId) {
+        return engines.get(dealerId.toUpperCase());
     }
 
     @Override
-    public List<String> getManufacturers(String siteId) {
-        return manufacturers.get(siteId.toUpperCase());
+    public List<String> getManufacturers(String dealerId) {
+        return manufacturers.get(dealerId.toUpperCase());
     }
 
     @Override
@@ -56,21 +56,21 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public boolean isEngineDataAvailable(String siteId) {
+    public boolean isEngineDataAvailable(String dealerId) {
 
-        return !isNull(vehicleDataMap.get(siteId.toUpperCase()).getEngineData());
+        return !isNull(vehicleDataMap.get(dealerId.toUpperCase()).getEngineData());
     }
 
     @Override
-    public boolean isVehicleTypeDataEnabled(String siteId) {
+    public boolean isVehicleTypeDataEnabled(String dealerId) {
 
-        return !isNull(vehicleDataMap.get(siteId.toUpperCase()).getVehicleTypeData());
+        return !isNull(vehicleDataMap.get(dealerId.toUpperCase()).getVehicleTypeData());
     }
 
     @Override
-    public boolean dealerExists(String siteId) {
+    public boolean dealerExists(String dealerId) {
 
-        VehicleData vehicleData = vehicleDataMap.get(siteId.toUpperCase());
+        VehicleData vehicleData = vehicleDataMap.get(dealerId.toUpperCase());
 
         return !isNull(vehicleData);
     }
@@ -78,9 +78,9 @@ public class VehicleServiceImpl implements VehicleService {
     @PostConstruct
     private void initialize() {
 
-        List<VehicleDataJson> siteControllerConfigList = vehicleDataJsonList.getVehicleDataJsonList();
+        List<VehicleDataJson> dataJsonList = vehicleDataJsonList.getVehicleDataJsonList();
 
-        List<VehicleData> vehicleDataList = siteControllerConfigList.stream()
+        List<VehicleData> vehicleDataList = dataJsonList.stream()
                                                      .map(VehicleDataJson::getVehicleData)
                                                      .collect(Collectors.toList());
 
